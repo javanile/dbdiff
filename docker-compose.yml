@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  dbdiff:
+    build: .
+    volumes:
+      - ./scripts:/scripts
+    links:
+      - mysql1
+      - mysql2
+
+  mysql1:
+    image: javanile/mysql:5.7.28
+    environment:
+      - MYSQL_DATABASE=mysql1
+      - MYSQL_ROOT_PASSWORD=secret
+
+  mysql2:
+    image: javanile/mysql:5.7.28
+    environment:
+      - MYSQL_DATABASE=mysql2
+      - MYSQL_ROOT_PASSWORD=secret
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 8080:80
+    environment:
+      - PMA_HOSTS=mysql1,mysql2
