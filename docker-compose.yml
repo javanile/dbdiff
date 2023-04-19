@@ -4,7 +4,7 @@ services:
   dbdiff:
     build: .
     volumes:
-      - ./scripts:/scripts
+      - ./tests/fixtures:/tests/fixtures
     links:
       - mysql1
       - mysql2

@@ -23,6 +23,6 @@ release:
 test-version: build
 	@docker compose run dbdiff --version
 
-test-diff: build up
-	@docker compose run dbdiff bash /scripts/test.sh demo_table
+test-diff-table: build up
+	@docker compose run dbdiff bash /tests/fixtures/diff-table.sh demo_table
 
